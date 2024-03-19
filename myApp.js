@@ -1,7 +1,16 @@
 require('dotenv').config();
-
+const mongoose = require('mongoose')
 
 let Person;
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+    // Continue with your application logic here
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
